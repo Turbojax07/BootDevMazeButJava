@@ -14,10 +14,12 @@ public class Cell {
     private Line topWall = new Line();
     private Line bottomWall = new Line();
 
-    private boolean leftVisibility = true;
-    private boolean rightVisibility = true;
-    private boolean topVisibility = true;
-    private boolean bottomVisibility = true;
+    public boolean leftVisibility = true;
+    public boolean rightVisibility = true;
+    public boolean topVisibility = true;
+    public boolean bottomVisibility = true;
+
+    public boolean visited = false;
 
     private Maze maze;
 
@@ -32,50 +34,34 @@ public class Cell {
         leftWall.setStartY(y);
         leftWall.setEndX(x);
         leftWall.setEndY(y + height);
+        leftWall.setVisible(false);
 
         rightWall.setStartX(x + width);
         rightWall.setStartY(y);
         rightWall.setEndX(x + width);
         rightWall.setEndY(y + height);
+        rightWall.setVisible(false);
 
         topWall.setStartX(x);
         topWall.setStartY(y);
         topWall.setEndX(x + width);
         topWall.setEndY(y);
+        topWall.setVisible(false);
 
         bottomWall.setStartX(x);
         bottomWall.setStartY(y + height);
         bottomWall.setEndX(x + width);
         bottomWall.setEndY(y + height);
+        bottomWall.setVisible(false);
 
         maze.getChildren().addAll(leftWall, rightWall, topWall, bottomWall);
     }
 
-    public void setVisible(boolean visible) {
-        if (leftVisibility) leftWall.setVisible(visible);
-        if (rightVisibility) rightWall.setVisible(visible);
-        if (topVisibility) topWall.setVisible(visible);
-        if (bottomVisibility) bottomWall.setVisible(visible);
-    }
-
-    public void setLeftVisibility(boolean visible) {
-        leftWall.setVisible(visible);
-        leftVisibility = visible;
-    }
-
-    public void setRightVisibility(boolean visible) {
-        rightWall.setVisible(visible);
-        rightVisibility = visible;
-    }
-
-    public void setTopVisibility(boolean visible) {
-        topWall.setVisible(visible);
-        topVisibility = visible;
-    }
-
-    public void setBottomVisibility(boolean visible) {
-        bottomWall.setVisible(visible);
-        bottomVisibility = visible;
+    public void draw() {
+        leftWall.setVisible(leftVisibility);
+        rightWall.setVisible(rightVisibility);
+        topWall.setVisible(topVisibility);
+        bottomWall.setVisible(bottomVisibility);
     }
 
     public void drawMove(Cell toCell, boolean undo) {
