@@ -36,7 +36,7 @@ public class JavaMaze extends Application {
         line.setStrokeWidth(5);
         line.setStroke(Color.GREEN);
 
-        Maze maze = new Maze(10, 10, 2, 3, 50, 50);
+        Maze maze = new Maze(10, 10, 10, 10, 50, 50);
         Scene scene = new Scene(maze, 800, 800);
 
         primaryStage.setScene(scene);
